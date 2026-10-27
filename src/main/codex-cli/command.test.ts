@@ -325,7 +325,9 @@ describe('getVersionManagerBinPaths', () => {
     const appDataAlias = join(root, 'AppData', 'Roaming', 'fnm', 'aliases', 'default')
     vi.stubEnv('FNM_DIR', '')
     vi.stubEnv('APPDATA', '')
-    onTestFinished(() => vi.unstubAllEnvs())
+    onTestFinished(() => {
+      vi.unstubAllEnvs()
+    })
 
     const paths = getVersionManagerBinPaths({ platform: 'win32', homePath: root })
     expect(paths).toContain(appDataAlias)

@@ -225,7 +225,9 @@ describe('patchPackagedProcessPath', () => {
     setPlatform('win32')
     Object.defineProperty(app, 'isPackaged', { configurable: true, value: true })
     vi.stubEnv('FNM_DIR', 'C:\\fnm')
-    onTestFinished(() => vi.unstubAllEnvs())
+    onTestFinished(() => {
+      vi.unstubAllEnvs()
+    })
     const pathDelimiter = process.platform === 'win32' ? ';' : ':'
     process.env.PATH = `C:\\Windows\\System32${pathDelimiter}C:\\Windows`
 
